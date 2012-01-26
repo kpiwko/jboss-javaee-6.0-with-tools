@@ -49,7 +49,7 @@
     </properties>
 
     <modules>
-        <module>jboss-javaee-6.0-web-with-tools</module>
+        <module>jboss-javaee-web-6.0-with-tools</module>
         <module>jboss-javaee-6.0-with-tools</module>
     </modules>
 </project>

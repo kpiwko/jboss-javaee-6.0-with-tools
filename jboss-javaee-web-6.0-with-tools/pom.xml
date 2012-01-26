@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jboss-javaee-6.0-web-with-tools</artifactId>
+    <artifactId>jboss-javaee-web-6.0-with-tools</artifactId>
     <packaging>pom</packaging>
 
     <name>JBoss Java EE 6 Web Profile Specification APIs with Tools</name>

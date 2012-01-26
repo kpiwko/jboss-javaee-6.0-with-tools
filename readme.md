@@ -13,7 +13,7 @@ Depending whether you want to use Java EE 6 Web Profile or Java EE 6 Full Profil
 		<dependencies>
 			<dependency>
 				<groupId>org.jboss.spec</groupId>
-        		<artifactId>jboss-javaee-6.0-web-with-tools-</artifactId>
+        		<artifactId>jboss-javaee-web-6.0-with-tools-</artifactId>
         		<version>1.0.0-SNAPSHOT</version>
         	</dependency>
 		</dependencies>
