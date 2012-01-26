@@ -43,7 +43,7 @@
         <version.junit>4.8.1</version.junit>
         <version.org.testng>5.14.6</version.org.testng>
 
-        <!-- Versions of Maven plugins -->
+        <!-- Versions of Maven plugins, user must setup them by his/her own -->
         <version.org.apache.maven.surefire.plugin>2.10</version.org.apache.maven.surefire.plugin>
         <version.org.jboss.as.plugins.jboss.as.maven.plugin>7.1.0.CR1b</version.org.jboss.as.plugins.jboss.as.maven.plugin>
     </properties>
@@ -52,4 +52,26 @@
         <module>jboss-javaee-web-6.0-with-tools</module>
         <module>jboss-javaee-6.0-with-tools</module>
     </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- The Maven Surefire plugin tests your application. Here we ensure we are using a version compatible with Arquillian -->
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.org.apache.maven.surefire.plugin}</version>
+                </plugin>
+                <!-- The JBoss AS plugin deploys your war to a local JBoss AS container -->
+                <!-- To use, set the JBOSS_HOME environment variable and run:
+                    mvn package jboss-as:deploy -->
+                <plugin>
+                    <groupId>org.jboss.as.plugins</groupId>
+                    <artifactId>jboss-as-maven-plugin</artifactId>
+                    <version>${version.org.jboss.as.plugins.jboss.as.maven.plugin}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
 </project>

@@ -31,6 +31,25 @@ Respectively, for the Java EE Full Profile:
 		</dependencies>
 	</dependencyManagement> 
 
+Later, you have to ensure you're running with correct versions of plugin. Add following snippet to ``<build>`` section of your pom.xml:
+
+	<pluginManagement>
+    	<plugins>
+        	<!-- The Maven Surefire plugin tests your application. Here we ensure we are using a version compatible with Arquillian -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.10</version>
+            </plugin>
+            <!-- The JBoss AS plugin deploys your war to a local JBoss AS container -->
+            <!-- To use, set the JBOSS_HOME environment variable and run:
+                 mvn package jboss-as:deploy -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.1.0.CR1b</version>
+            </plugin>
+        </plugins>
+	</pluginManagement>
 
 Use cases
 =========
@@ -40,21 +59,16 @@ There are various use case, let's cover the most popular ones.
 Deploying/undeploying your application to server
 ------------------------------------------------
 
-To be able to easily deploy (or undeploy) your application from the application server, include following (or modify appropriate section) in your pom.xml file:
-
-	<build>
-    	<plugins>
-        	<!-- The JBoss AS plugin deploys your war to a local JBoss AS container -->
-            <!-- To use, set the JBOSS_HOME environment variable and run:
-                    mvn package jboss-as:deploy -->
-            <plugin>
-                <groupId>org.jboss.as.plugins</groupId>
-                <artifactId>jboss-as-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+To be able to easily deploy (or undeploy) your application from the application server, include following in the ``<build>`` section of your pom.xml file:
+	
+	<plugins>    
+    	<plugin>
+        	<groupId>org.jboss.as.plugins</groupId>
+            <artifactId>jboss-as-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
     
-See <https://github.com/jbossas/jboss-as-maven-plugin> for further information how to use the plugin.
+You'll be able to deploy your application via ``mvn package jboss-as:deploy``. See <https://github.com/jbossas/jboss-as-maven-plugin> for further information how to use the plugin.
  	
 Testing your application with Arquillian
 ----------------------------------------
